@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">YadroMobile</string>
+    <string name="contacts_not_found">Контакты не найдены</string>
+    <string name="open_settings">Открыть настройки</string>
+    <string name="permissions_not_provided_you_can_provide_them_in_the_app_settings">Разрешения не предоставлены. Вы можете включить их в настройках приложения.</string>
+</resources>
