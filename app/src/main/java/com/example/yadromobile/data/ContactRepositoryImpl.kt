@@ -34,7 +34,7 @@ class ContactRepositoryImpl @Inject constructor(@ApplicationContext private val 
         )?.use { cursor ->
             val idColumnIndex = cursor.getColumnIndex(ContactsContract.Contacts._ID)
             val nameColumnIndex = cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME)
-
+            val photoColumnIndex = cursor.getColumnIndex(ContactsContract.Contacts.PHOTO_URI)
             if (idColumnIndex == -1 || nameColumnIndex == -1) {
                 return@withContext emptyList()
             }
@@ -44,7 +44,7 @@ class ContactRepositoryImpl @Inject constructor(@ApplicationContext private val 
                 val fullName = cursor.getString(nameColumnIndex) ?: continue
                 val nameParts = fullName.split(" ").filter { it.isNotBlank() }
 
-                val photoUriString = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.PHOTO_URI))
+                val photoUriString = cursor.getString(photoColumnIndex)
                 val photoUri = photoUriString?.let { Uri.parse(it) }
 
                 if (nameParts.isEmpty()) continue
